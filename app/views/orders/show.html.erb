@@ -1,0 +1,13 @@
+<!-- app/views/orders/show.html.erb -->
+<h1>Order Details</h1>
+
+<p>Order ID: <%= @order.id %></p>
+<ul>
+  <% @order.order_items.each do |item| %>
+    <li>
+      <%= item.product.name %> - <%= item.quantity %> x <%= item.unit_price %>
+    </li>
+  <% end %>
+</ul>
+<p>Total Amount: <%= @order.total_amount %></p>
+<p>Tax Amount: <%= @order.tax_amount %></p>

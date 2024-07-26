@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: tkaur
+  password: tkaur123
+  host: localhost
+
+development:
+  <<: *default
+  database: winnipeg_wonders_development
+
+test:
+  <<: *default
+  database: winnipeg_wonders_test
+
+production:
+  <<: *default
+  database: winnipeg_wonders_production
+  username: winnipeg_wonders
+  password: <%= ENV['WINNIPEG_WONDERS_DATABASE_PASSWORD'] %>

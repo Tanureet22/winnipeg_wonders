@@ -1,0 +1,22 @@
+<!-- app/views/addresses/new.html.erb -->
+<h1>Add Address</h1>
+
+<%= form_with model: @address, local: true do |f| %>
+  <p>
+    <%= f.label :street %><br>
+    <%= f.text_field :street %>
+  </p>
+  <p>
+    <%= f.label :city %><br>
+    <%= f.text_field :city %>
+  </p>
+  <p>
+    <%= f.label :postal_code %><br>
+    <%= f.text_field :postal_code %>
+  </p>
+  <p>
+    <%= f.label :province_id, 'Province' %><br>
+    <%= f.collection_select :province_id, Province.all, :id, :name %>
+  </p>
+  <%= f.submit 'Add Address' %>
+<% end %>

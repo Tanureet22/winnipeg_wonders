@@ -1,0 +1,29 @@
+<!-- app/views/products/index.html.erb -->
+<h1>Products</h1>
+
+<%= form_with url: products_path, method: :get, local: true do |form| %>
+  <div>
+    <%= form.label :filter, "Filter products" %>
+    <%= form.select :filter, options_for_select([['All', nil], ['On Sale', 'on_sale']]), selected: params[:filter] %>
+    <%= form.submit 'Filter' %>
+  </div>
+<% end %>
+<% @products.each do |product| %>
+  <%= render partial: "product", locals: { product: product } %>
+<% end %>
+
+<ul>
+  <% @products.each do |product| %>
+    <li>
+      <h2><%= product.name %></h2>
+      <p><%= product.description %></p>
+      <p>Price: <%= number_to_currency(product.price) %></p>
+      <% if product.on_sale %>
+        <p><strong>On Sale!</strong></p>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+
+<%= paginate @products %>

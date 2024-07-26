@@ -1,0 +1,9 @@
+<!-- app/views/orders/index.html.erb -->
+<h1>Past Orders</h1>
+
+<% @orders.each do |order| %>
+  <p>
+    <%= link_to "Order ##{order.id}", order_path(order) %>
+    - <%= number_to_currency order.total_amount %>
+  </p>
+<% end %>
