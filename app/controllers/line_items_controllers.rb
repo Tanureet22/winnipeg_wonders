@@ -22,6 +22,17 @@ class LineItemsController < ApplicationController
     end
   end
 
+  def change
+    create_table :line_items do |t|
+      t.references :cart, null: false, foreign_key: true
+      t.references :product, null: false, foreign_key: true
+      t.integer :quantity, default: 1
+      t.decimal :price, precision: 8, scale: 2
+
+      t.timestamps
+    end
+  end
+
   def destroy
     @line_item = LineItem.find(params[:id])
     @line_item.destroy

@@ -31,3 +31,4 @@ Product.create([
 ])
 Page.create!(title: 'Contact', content: 'Contact us at contact@winnipegwonders.com')
 Page.create!(title: 'About', content: 'Winnipeg Wonders is a local retail business established in 1995...')
+product.image.attach(io: File.open('/path/to/image.jpg'), filename: 'image.jpg')
