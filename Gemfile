@@ -47,6 +47,9 @@ gem 'image_processing', '~> 1.2'
 gem 'fog-aws'
 
 
+gem 'rubocop-rails', require: false
+gem 'rubocop-capybara', require: false
+
 gem 'rubocop', require: false
 
 # Gemfile
