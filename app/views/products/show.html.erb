@@ -3,14 +3,14 @@
 
   <div class="card shadow">
     <div class="row no-gutters">
-      <div class="col-md-4">
-        <!-- Display the product image if it exists, otherwise show a placeholder -->
-        <% if @product.image.attached? %>
-          <%= image_tag url_for(@product.image), class: "card-img", alt: @product.name %>
-        <% else %>
-          <%= image_tag 'https://via.placeholder.com/300x300', class: "card-img", alt: "Placeholder image" %>
-        <% end %>
-      </div>
+    <div class="col-md-4">
+    <!-- Display the product image if it exists, otherwise show a placeholder -->
+    <% if @product.image.present? %>
+      <%= image_tag @product.image.url, class: "card-img", alt: @product.name %>
+    <% else %>
+      <%= image_tag 'https://via.placeholder.com/300x300', class: "card-img", alt: "Placeholder image" %>
+    <% end %>
+  </div>
       <div class="col-md-8">
         <div class="card-body">
           <h2 class="card-title"><%= @product.name %></h2>
