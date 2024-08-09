@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: myapp_development
+      POSTGRES_USER: myapp_user
+      POSTGRES_PASSWORD: myapp_password
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  web:
+    build: .
+    volumes:
+      - ".:/app"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://myapp_user:myapp_password@db:5432/myapp_development
+
+volumes:
+  db_data:

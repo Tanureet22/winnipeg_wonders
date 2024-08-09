@@ -9,18 +9,30 @@ gem 'open-uri'
 gem 'faker'
 
 gem 'kaminari'
-
+gem 'cancancan'
+gem 'pundit'
+gem 'bulma-rails'
+gem 'httparty'
+gem 'capybara'
 gem 'activeadmin'
 gem 'devise'
 gem 'stripe'
 
 gem 'pg'
 
+gem 'carrierwave', '~> 2.0'
+gem 'mini_magick'
+
 # Gemfile
 gem 'bootstrap', '~> 5.0.2'
 gem 'jquery-rails'
 
 gem 'execjs'
+
+gem 'activeadmin_quill_editor'
+
+gem 'aws-sdk-s3', '~> 1.0'
+
 
 # Gemfile
 gem 'sassc-rails'
@@ -29,6 +41,13 @@ gem 'dotenv-rails', groups: [:development, :test]
 
 # Gemfile
 gem 'gretel'
+
+gem 'image_processing', '~> 1.2'
+
+gem 'fog-aws'
+
+
+gem 'rubocop', require: false
 
 # Gemfile
 gem 'carrierwave', '~> 2.0'

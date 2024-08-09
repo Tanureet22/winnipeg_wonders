@@ -13,6 +13,10 @@ class StaticPagesController < ApplicationController
     end
   end
 
+  def show
+    @static_page = StaticPage.find_by(title: params[:title].capitalize)
+  end
+  
   def about
     @page = StaticPage.find_by(title: 'About')
   end

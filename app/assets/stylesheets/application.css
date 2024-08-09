@@ -14,7 +14,7 @@
  *= require_self
  */
 
- @import "bootstrap";
+ @import "bootstrap/scss/bootstrap";
  
 primary-color::after #3498db
 

@@ -1,7 +1,7 @@
 # app/controllers/products_controller.rb
 class ProductsController < ApplicationController
   def index
-    # Logic to display products
+    @categories = Category.all
     @products = Product.all
     @products = @products.where(on_sale: true) if params[:filter] == 'on_sale'
     @products = @products.new_products if params[:filter] == 'new'
@@ -20,6 +20,8 @@ class ProductsController < ApplicationController
   end
 
   def index
+    @categories = Category.all
+  Rails.logger.debug { "Categories: #{@categories.inspect}" }
     if params[:filter] == 'on_sale'
       @products = Product.where(on_sale: true).page(params[:page]).per(10)
     elsif params[:filter] == 'new'
@@ -52,5 +54,5 @@ class ProductsController < ApplicationController
       render :new
     end
   end
-  
+
 end

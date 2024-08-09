@@ -1,12 +1,13 @@
-// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
+
+import Rails from '@rails/ujs';
+Rails.start();
 import "@hotwired/turbo-rails"
 import "controllers"
-// app/assets/javascripts/application.js
-//= require stripe
 
-// app/javascript/packs/application.js
+
 import "bootstrap"
 import "stylesheets/application"
+import 'bootstrap/dist/js/bootstrap.bundle';
 
 document.addEventListener("turbolinks:load", () => {
   $('[data-toggle="tooltip"]').tooltip()

@@ -1,16 +1,29 @@
-
 ActiveAdmin.register Product do
-  permit_params :name, :description, :price, :stock_quantity, :image, category_id: []
+  permit_params :name, :description, :price, :image, :category_id
 
-  form do |f|
-    f.inputs do
+  form html: { multipart: true } do |f|
+    f.inputs 'Product Details' do
       f.input :name
       f.input :description
       f.input :price
-      f.input :stock_quantity
       f.input :image, as: :file
-      f.input :categories, as: :check_boxes, collection: Category.all
+      f.input :category, as: :select, collection: Category.all.map { |c| [c.name, c.id] }
     end
     f.actions
+  end
+
+  show do
+    attributes_table do
+      row :name
+      row :description
+      row :price
+      row :category
+      row :image do |product|
+        if product.image.present?
+          image_tag product.image.url, size: '200x200'
+        end
+      end
+    end
+    active_admin_comments
   end
 end
