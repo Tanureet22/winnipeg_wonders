@@ -5,9 +5,10 @@ one:
   description: MyText
   price: 9.99
   stock_quantity: 1
-
+  image: MyString
 two:
   name: MyString
   description: MyText
   price: 9.99
   stock_quantity: 1
+   image: MyString
