@@ -67,3 +67,7 @@ class Province < ApplicationRecord
 
   # Additional fields: :name, :gst, :pst, :hst, etc.
 end
+
+class User < ApplicationRecord
+  has_one :cart, dependent: :destroy
+end
