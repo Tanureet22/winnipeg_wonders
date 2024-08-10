@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Winnipeg Wonders</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+  <%= yield %>
+  
+  <%= form_for :destroy_user_session, url: destroy_user_session_path, method: :delete do %>
+    <%= submit_tag 'Sign Out' %>
+  <% end %>
+
+</body>
+</html>

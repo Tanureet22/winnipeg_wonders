@@ -31,6 +31,8 @@ Rails.application.routes.draw do
   resources :addresses, only: [:new, :create]
   resources :line_items, only: [:create]
 
+  
+
   # Root route
   root 'products#index'
 end

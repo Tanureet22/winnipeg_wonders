@@ -10,9 +10,9 @@ class Cart < ApplicationRecord
     if current_item
       current_item.increment(:quantity)
     else
-      current_item = line_items.build(product: product, quantity: 1)
+      current_item = line_items.build(product_id: product.id, quantity: 1)
     end
-    current_item.save
+    current_item.cart_id = id
     current_item
   end
 
