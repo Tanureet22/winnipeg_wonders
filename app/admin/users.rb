@@ -20,7 +20,7 @@ ActiveAdmin.register User do
     f.actions
   end
 
-  filter :address_street, as: :string, label: 'Street'
+  filter :address_street_cont, as: :string, label: 'Street'
   filter :address_city, as: :string, label: 'City'
   filter :address_province, as: :string, label: 'Province'
   filter :address_postal_code, as: :string, label: 'Postal Code'

@@ -17,6 +17,7 @@ gem 'capybara'
 gem 'activeadmin'
 gem 'devise'
 gem 'stripe'
+gem 'ransack', '~> 4.2.0'
 
 gem 'pg'
 
