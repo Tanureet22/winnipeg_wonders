@@ -24,6 +24,8 @@ gem 'pg'
 gem 'carrierwave', '~> 2.0'
 gem 'mini_magick'
 
+gem 'will_paginate', '~> 3.3'
+
 # Gemfile
 gem 'bootstrap', '~> 5.0.2'
 gem 'jquery-rails'
@@ -53,8 +55,7 @@ gem 'rubocop-capybara', require: false
 
 gem 'rubocop', require: false
 
-# Gemfile
-gem 'carrierwave', '~> 2.0'
+
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.4"
