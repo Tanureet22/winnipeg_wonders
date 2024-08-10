@@ -1,21 +1,21 @@
 Rails.application.routes.draw do
-  get 'categories/index'
-  get 'categories/show'
-  get 'pages/show'
+  # Static pages
   get '/contact', to: 'pages#show', id: 'Contact'
   get '/about', to: 'pages#show', id: 'About'
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
 
+  # Devise for Admin and Users
+  devise_for :admin_users, ActiveAdmin::Devise.config
   devise_for :users
 
-  get 'addresses/new'
-  get 'addresses/create'
-  get 'orders/new'
-  get 'orders/create'
-  get 'orders/show'
-  get 'orders/index'
-  get 'carts/show'
+  # ActiveAdmin routes
+  ActiveAdmin.routes(self)
+
+  # Resource routes
+  resources :categories, only: [:index, :show] do
+    member do
+      get :products, to: 'products#category'
+    end
+  end
 
   resources :products, only: [:index, :show] do
     collection do
@@ -23,22 +23,14 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :categories, only: [] do
-    member do
-      get :products, to: 'products#category'
-    end
-  end
-
-  resource :cart, only: [:show, :update, :destroy]
-  resources :orders, only: [:new, :create, :show, :index]
-  resources :addresses, only: [:new, :create]
-  resources :categories, only: [:index, :show]
-  resources :products, only: [:show]
-  resources :line_items, only: [:create]
-
-  resources :carts, only: [:show] do
+  resource :cart, only: [:show, :update, :destroy] do
     resources :line_items, only: [:create]
   end
-  
+
+  resources :orders, only: [:new, :create, :show, :index]
+  resources :addresses, only: [:new, :create]
+  resources :line_items, only: [:create]
+
+  # Root route
   root 'products#index'
 end
