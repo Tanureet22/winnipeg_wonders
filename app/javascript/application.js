@@ -1,3 +1,4 @@
+require("@rails/ujs").start()
 
 import Rails from '@rails/ujs';
 Rails.start();
