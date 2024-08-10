@@ -6,7 +6,6 @@
     <%= csp_meta_tag %>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -54,13 +53,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-    <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= form_for(:destroy_user_session, url: destroy_user_session_path, method: :delete) do %>
-  <%= submit_tag 'Sign out' %>
-<% end %>
-
   </body>
 </html>
