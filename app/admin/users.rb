@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-  permit_params :email, :password, :password_confirmation, address_attributes: [:street, :city, :province, :postal_code]
+  permit_params :email, :password, :password_confirmation, address_attributes: [:id, :street, :city, :province, :postal_code]
 
   form do |f|
     f.inputs 'User Details' do
@@ -9,7 +9,7 @@ ActiveAdmin.register User do
     end
 
     f.inputs 'Address Details' do
-      f.inputs :address, for: [:address, f.object.address || Address.new] do |a|
+      f.inputs :address, allow_destroy: true, new_record: true do |a|
         a.input :street
         a.input :city
         a.input :province
@@ -19,4 +19,9 @@ ActiveAdmin.register User do
 
     f.actions
   end
+
+  filter :address_street, as: :string, label: 'Street'
+  filter :address_city, as: :string, label: 'City'
+  filter :address_province, as: :string, label: 'Province'
+  filter :address_postal_code, as: :string, label: 'Postal Code'
 end
