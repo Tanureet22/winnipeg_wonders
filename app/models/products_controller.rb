@@ -2,15 +2,15 @@ class ProductsController < ApplicationController
   def index
     @categories = Category.all
 
-    @products = Product.all
-    if params[:search].present?
-      @products = @products.where("name ILIKE ? OR description ILIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
+
+    if params[:search].present? || params[:category_id].present?
+      @products = Product.all
+      @products = @products.where("name LIKE ? OR description LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%") if params[:search].present?
+      @products = @products.where(category_id: params[:category_id]) if params[:category_id].present?
+    else
+      @products = Product.all
     end
 
-    if params[:category_id].present?
-      @products = @products.where(category_id: params[:category_id])
-    end
-
-    @products = @products.paginate(page: params[:page], per_page: 10)
+    @products = @products.page(params[:page]) # Assuming pagination is used
   end
 end
